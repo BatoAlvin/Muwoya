@@ -12,6 +12,7 @@ use App\Http\Controllers\InlawsController;
 use App\Http\Controllers\LoansController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserpermissionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServicecategoryController;
@@ -90,6 +91,9 @@ Route::get('exportsavingsummary/', [SavingsummaryController::class, 'export'])->
 
 //Loans
 Route::resource('loans', LoansController::class)->middleware('auth');
+
+//Userpermissions
+Route::resource('userpermission', UserpermissionController::class)->middleware('auth');
 
 // Route::get('/',  [DashboardController::class,'index'])->middleware(['auth'])->name('dashboard');
 // Route::get('/dashboard',  [DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');

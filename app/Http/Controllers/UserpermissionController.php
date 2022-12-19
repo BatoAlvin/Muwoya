@@ -14,7 +14,8 @@ class UserpermissionController extends Controller
      */
     public function index()
     {
-        //
+        return view('userpermissions.index');
+
     }
 
     /**
