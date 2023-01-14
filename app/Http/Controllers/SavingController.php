@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Familymembers;
 use Illuminate\Http\Request;
 use App\Exports\SavingsExport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -25,11 +26,13 @@ class SavingController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->role->view_saving ){
         $saving = Saving::where('status',1)->get();
         $consignee = Familymembers::where('status',1)->get();
         return view('savings.index',['saving'=>$saving,'consignee'=>$consignee]);
-
-        // return view('savings.index')->with('saving',$saving);
+    }else{
+        return redirect('/');
+    }
     }
 
     /**

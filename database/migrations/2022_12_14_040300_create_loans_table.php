@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->string('loan_name');
+            $table->string('loan_id');
             $table->string('loan_amount');
             $table->string('return_amount');
             $table->string('loan_percentage');

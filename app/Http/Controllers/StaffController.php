@@ -45,8 +45,8 @@ class StaffController extends Controller
         'email' => $staff->staff_email,
         'phone' => $staff->staff_contact,
         'role_id' => $request->role,
-        'speciality_id' => $request->speciality_id,
-        'staff_id' => $staff->id,
+        // 'speciality_id' => $request->speciality_id,
+        'family_id' => $staff->id,
         'password' => bcrypt($request->password),
     ]);
 

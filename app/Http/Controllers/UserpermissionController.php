@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Userpermission;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 
 class UserpermissionController extends Controller
 {
@@ -14,7 +16,8 @@ class UserpermissionController extends Controller
      */
     public function index()
     {
-        return view('userpermissions.index');
+        $userpermissions = Userpermission::where('id','!=',Auth::user()->role_id)->where('id','!=',1)->get();
+        return view('userpermissions.index')->with('userpermissions',$userpermissions);
 
     }
 
@@ -45,9 +48,10 @@ class UserpermissionController extends Controller
      * @param  \App\Models\Userpermission  $userpermission
      * @return \Illuminate\Http\Response
      */
-    public function show(Userpermission $userpermission)
+    public function show( $id)
     {
-        //
+        $userpermission = Userpermission::find($id);
+        return view('userpermissions.userpermission')->with(['userpermission'=>$userpermission]);
     }
 
     /**
@@ -68,9 +72,17 @@ class UserpermissionController extends Controller
      * @param  \App\Models\Userpermission  $userpermission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Userpermission $userpermission)
+    public function update(Request $request,  $id)
     {
-        //
+        $perm = Userpermission::where('id',$id)->update([
+            $request->column => $request->status,
+        ]);
+        if($perm){
+            return "updated";
+        }else{
+            return "Failed";
+        }
+
     }
 
     /**

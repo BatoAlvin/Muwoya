@@ -75,7 +75,7 @@
                         <div class="header-left">
                             <div class="search_bar dropdown">
                                 <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                    <h2>Mowaya Family Savings</h2>
+                                    <h2>Muwoya Family Savings</h2>
 
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
@@ -128,20 +128,30 @@
                     <li><a href="{{route('dashboard')}}"  aria-expanded="false">
                         <i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
                     </li>
+
+
                     <li class="nav-label">Family Members</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-app-store"></i><span class="nav-text">Manage Family Members</span></a>
                         <ul aria-expanded="false">
+                            @if(Auth::user()->role->view_familymember )
                             <li><a href="{{ route('familymembers.index')}}">Family Members</a></li>
+                            @endif
                         </ul>
                     </li>
+
 
                     <li class="nav-label">Savings</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-app-store"></i><span class="nav-text">Manage Savings</span></a>
                         <ul aria-expanded="false">
+                            @if(Auth::user()->role->view_saving )
                             <li><a href="{{ route('savings.index')}}">Savings</a></li>
+                            @endif
+
+                            @if(Auth::user()->role->view_savingsummary )
                             <li><a href="{{ route('savingsummary.index')}}">Savingsummary</a></li>
+                            @endif
                             </li>
                         </ul>
                     </li>
@@ -151,9 +161,10 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-app-store"></i><span class="nav-text">Manage Loans</span></a>
                         <ul aria-expanded="false">
+                            @if(Auth::user()->role->view_loan )
                             <li><a href="{{ route('loans.index')}}">Loans</a></li>
-                            {{-- <li><a href="{{ route('savingsummary.index')}}">Savingsummary</a></li> --}}
-                            </li>
+                            @endif
+                        </li>
                         </ul>
                     </li>
 
@@ -170,6 +181,16 @@
                         </ul>
                     </li>
 
+
+                    <li class="nav-label">Permissions</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-app-store"></i><span class="nav-text">Manage Permissions</span></a>
+                        <ul aria-expanded="false">
+                            @if(Auth::user()->role->view_permission )
+                            <li><a href="{{ route('userpermission.index')}}">Permissions</a></li>
+                       @endif
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -196,7 +217,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Alvin</a> 2020</p>
+                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Alvin</a> 2023</p>
 
             </div>
         </div>

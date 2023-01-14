@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Exports\FamilymembersExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 
 class FamilymembersController extends Controller
@@ -22,8 +23,12 @@ class FamilymembersController extends Controller
      */
     public function index()
     {
-        $member = Familymembers::where('status',1)->get();
-        return view('familymembers.index')->with('member',$member);
+        if(Auth::user()->role->view_familymember ){
+            $member = Familymembers::where('status',1)->get();
+            return view('familymembers.index')->with('member',$member);
+        }else{
+            return redirect('/');
+        }
     }
 
 
@@ -43,7 +48,6 @@ class FamilymembersController extends Controller
 
     $staff->enroll=1;
     $staff->save();
-
           return redirect('/familymembers')->with('message', "Staff $user->name enrolled successfully");
     }
 

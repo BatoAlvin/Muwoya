@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Inlaws;
 use Illuminate\Http\Request;
 use App\Exports\InlawsExport;
+use App\Imports\ImportInlaw;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -13,6 +14,17 @@ class InlawsController extends Controller
     public function export()
     {
         return Excel::download(new InlawsExport, 'inlaw.xlsx');
+    }
+
+    //Import excel file
+    public function importView(Request $request){
+        return view('inlaws.index');
+    }
+
+    public function import(Request $request){
+        Excel::import(new ImportInlaw,
+                      $request->file('file')->store('files'));
+        return redirect()->back();
     }
     /**
      * Display a listing of the resource.

@@ -106,12 +106,26 @@ function clearText()
 
                         <thead>
                             <tr>
-                                <th>Roles</th>
+                                <th style="color:#222;">Roles</th>
 
-                                <th style="text-align:center;">Action</th>
+                                <th style="text-align:center; color:#222;">Action</th>
                             </tr>
                         </thead>
-            
+                        @foreach ($userpermissions as $userpermission)
+                        <tr>
+                            <td style="color:#222;">{{ Illuminate\Support\Str::of($userpermission->role_name)->words(6)}}</td>
+                            <td>
+                                <div class="center">
+
+                        <a href="{{url('userpermission/'.$userpermission->id )}}">
+                            <button class="btn btn-success"> View permission </button>
+                        </a>
+                                    </div>
+                            </td>
+
+                        </tr>
+
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

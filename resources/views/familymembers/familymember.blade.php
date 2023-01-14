@@ -133,9 +133,9 @@ else {
                                   <label for="recipient-name" class="col-form-label">Role</label>
                                   <select class="form-control" name="position_id" required>
                                       <option selected disabled value=''>Choose Role</option>
-                                      <option value='administrator'>Administrator</option>
-                                      <option value='secretary'>Secretary</option>
-                                      <option value='user'>User</option>
+                                      <option value='1'>Administrator</option>
+                                      <option value='2'>Secretary</option>
+                                      <option value='3'>User</option>
                                     <div id="editor-container" class="mb-1"></div>
                                       </select>
                                 </div>

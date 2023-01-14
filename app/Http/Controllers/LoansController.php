@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Loans;
 use App\Models\Familymembers;
+use App\Exports\LoansExport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LoansController extends Controller
 {
+    public function export()
+    {
+        return Excel::download(new LoansExport, 'loan.xlsx');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,10 +22,13 @@ class LoansController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->role->view_loan ){
         $loan = Loans::where('status',1)->get();
         $consignee = Familymembers::where('status',1)->get();
         return view('loans.index',['loan'=>$loan,'consignee'=>$consignee]);
-
+    }else{
+        return redirect('/');
+    }
     }
 
     /**
@@ -40,7 +50,7 @@ class LoansController extends Controller
     public function store(Request $request)
     {
         $post_service = Loans::create([
-            'loan_name' => $request->loan_name,
+            'loan_id' => $request->loan_id,
             'loan_amount' => $request->loan_amount,
             'return_amount' => $request->return_amount,
             'loan_percentage' => $request->loan_percentage,
@@ -80,9 +90,21 @@ class LoansController extends Controller
      * @param  \App\Models\Loans  $loans
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Loans $loans)
+    public function update(Request $request,  $id)
     {
-        //
+        $check = Loans::where('id',$id)->first();
+        if ($check) {
+            $return = (((100+$request->loan_percentage)/100)*$request->loan_amount);
+            $service = Loans::where('id',$id)->update([
+                'loan_id' => $request->loan_id,
+                'loan_amount' => $request->loan_amount,
+                'return_amount' => $return,
+                'loan_percentage' => $request->loan_percentage,
+                'loan_description' => $request->loan_description,
+                'loan_date' => $request->loan_date,
+            ]);
+        return redirect('/loans')->with('message', "Updated successfully");
+        }
     }
 
     /**
@@ -91,8 +113,12 @@ class LoansController extends Controller
      * @param  \App\Models\Loans  $loans
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Loans $loans)
+    public function destroy($id)
     {
-        //
+        $loan=Loans::find($id);
+        $loan->update([
+          'status'=>0,
+        ]);
+        return redirect('/loans')->with('message', "User removed successfully");
     }
 }

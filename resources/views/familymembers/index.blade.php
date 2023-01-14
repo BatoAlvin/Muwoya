@@ -30,7 +30,9 @@ color:#000;
         </div>
     </div>
     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        @if(Auth::user()->role->add_familymember )
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="mt-3" style="float: right;margin-right:10px;"><i class="fa fa-plus">Add Family Member</i></button>
+       @endif
 
      <a href="{{ route('exportfamilymember')}}" class="btn btn-success"><i class="fa fa-download" style="color:#fff;">Excel</i></a>
 
@@ -111,9 +113,14 @@ color:#000;
 
                                 <td>
                                     <a href="{{url('familymembers/'.$members->id )}}"<button class="btn btn-success"><i class="fa fa-eye" style="color: #fff;"></i></button></a>
+
+
+                                    @if(Auth::user()->role->update_familymember )
                                     <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#exampleModal{{ $members->id }}"><i class='fa fa-edit'>
                                        </i>
                                        </button>
+                                       @endif
+
 
                                        <div class="modal fade" id="exampleModal{{ $members->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                            <div class="modal-dialog" role="document">
@@ -170,8 +177,10 @@ color:#000;
                                       <form action="{{route('familymembers.destroy', $members->id)}}" method="post">
                                         {{csrf_field()}}
                                         <input name="_method" type="hidden" value="DELETE">
+                                        @if(Auth::user()->role->delete_familymember )
                                         <button class="btn btn-danger"  onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
-                                        </form>
+                                       @endif
+                                    </form>
                                     </td>
                             </tr>
                             @endforeach

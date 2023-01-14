@@ -54,6 +54,7 @@
                         <div class="stat-text">Account Number</div>
                         <div class="stat-digit"> <i class="fa fa-id-card"></i>3202034639</div>
                     </div>
+
                     <div class="progress">
                         <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -119,17 +120,17 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
     </figure>
-{{--
+
     <script type="text/javascript">
         Highcharts.chart('container', {
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Programs against Organizations'
+                text: 'Members against Savings'
             },
             subtitle: {
-                text: 'Source: <a href="#">Recordbank</a>'
+                text: 'Source: <a href="#">Muwoya family savings</a>'
             },
             xAxis: {
                 type: 'category',
@@ -144,7 +145,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Programs'
+                    text: 'Savings'
                 }
             },
             legend: {
@@ -157,9 +158,9 @@
                 name: 'Population',
                 data: [
                     @php
-                    foreach ($orgs as $org){
+                    foreach ($membersavings as $org){
                         $myvar = $org['name'];
-                        echo "[   '".$myvar."',".  $org['programs']."],";
+                        echo "[   '".$myvar."',".  $org['amount']."],";
 
                     }
                     @endphp
@@ -180,5 +181,5 @@
             }]
         });
                 </script>
-            </body> --}}
+            </body>
     @endsection

@@ -7,6 +7,7 @@ use App\Models\Familymembers;
 use App\Models\Saving;
 use App\Exports\SavingsummaryExport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SavingsummaryController extends Controller
@@ -22,6 +23,7 @@ class SavingsummaryController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->role->view_savingsummary ){
         $membersavings = [];
         $members = Familymembers::all();
 
@@ -31,6 +33,9 @@ foreach ($members as $member) {
     array_push($membersavings,['id'=>$member->id,'name'=>$member->family_name,'amount'=>$savings]);
 }
         return view('savingsummary.index',['savingsummary'=>$membersavings]);
+    }else{
+        return redirect('/');
+    }
     }
 
     /**

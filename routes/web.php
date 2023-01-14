@@ -91,9 +91,15 @@ Route::get('exportsavingsummary/', [SavingsummaryController::class, 'export'])->
 
 //Loans
 Route::resource('loans', LoansController::class)->middleware('auth');
+Route::get('exportloan/', [LoansController::class, 'export'])->name('exportloan')->middleware('auth');
 
 //Userpermissions
 Route::resource('userpermission', UserpermissionController::class)->middleware('auth');
+Route::post('validateuserpermission', [UserpermissionController::class, 'validateuserpermission'])->middleware('auth');
+
+
+Route::get('/file-import',[InlawsController::class,'importView'])->name('import-view');
+Route::post('/import',[InlawsController::class,'import'])->name('import');
 
 // Route::get('/',  [DashboardController::class,'index'])->middleware(['auth'])->name('dashboard');
 // Route::get('/dashboard',  [DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');

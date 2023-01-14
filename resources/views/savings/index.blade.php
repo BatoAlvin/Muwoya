@@ -33,8 +33,10 @@ color:#000;
         </div>
     </div>
     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        @if(Auth::user()->role->add_saving )
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="mt-3" style="float: right;margin-right:10px;"><i class="fa fa-plus">Add Saving</i></button>
-     <a href="{{ route('exportsaving')}}" class="btn btn-success"><i class="fa fa-download" style="color:#fff;">Excel</i></a>
+        @endif
+        <a href="{{ route('exportsaving')}}" class="btn btn-success"><i class="fa fa-download" style="color:#fff;">Excel</i></a>
 
         {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="mt-3" style="float: right;margin-right:10px;"><i class="fa fa-plus">Add Saving</i></button> --}}
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -49,28 +51,22 @@ color:#000;
 
                 <div class="modal-body">
                     <form action="{{ route('savings.store')}}" method='post'>
-
-
                                  <input id='token' type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                                  <div class="form-group">
                                   <label for="recipient-name" class="coll">Name</label>
                                   <select class="form-control" name="name" required>
-
                                     <option selected disabled value=''>Choose Name</option>
                                         @foreach($consignee as $consignees)
-
                                         <option value="{{ $consignees->id}}">{{ $consignees->family_name}}</option>
                                         <div id="editor-container" class="mb-1"></div>
                                         @endforeach
-
                                    </select>
-
                                 </div>
 
                         <div class="form-group">
                          <label for="recipient-name" class="coll">Savings Amount</label>
-                         <input type="text" class="form-control"  name="amount" id="amountid" required>
+                         <input type="number" class="form-control"  name="amount" id="amountid" required>
                        </div>
 
 
@@ -129,9 +125,11 @@ color:#000;
 
                                 <td>
                                     <a href="{{url('savings/'.$savings->id )}}"<button class="btn btn-success"><i class="fa fa-eye" style="color:#fff;"></i></button></a>
+                                    @if(Auth::user()->role->update_saving )
                                     <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#exampleModal{{ $savings->id }}"><i class='fa fa-edit'>
                                        </i>
                                        </button>
+                                        @endif
 
                                        <div class="modal fade" id="exampleModal{{ $savings->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                            <div class="modal-dialog" role="document">
@@ -155,7 +153,7 @@ color:#000;
 
                                                    <div class="form-group">
                                                     <label for="recipient-name" class="col-form-label">Savings Amount</label>
-                                                    <input type="text" class="form-control"  name="amount" required value="{{$savings->amount}}">
+                                                    <input type="number" class="form-control"  name="amount" required value="{{$savings->amount}}">
                                                   </div>
 
 
@@ -185,8 +183,10 @@ color:#000;
                                       <form action="{{route('savings.destroy', $savings->id)}}" method="post">
                                         {{csrf_field()}}
                                         <input name="_method" type="hidden" value="DELETE">
+                                        @if(Auth::user()->role->delete_saving )
                                         <button class="btn btn-danger"  onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
-                                        </form>
+                                       @endif
+                                    </form>
                                     </td>
                             </tr>
                             @endforeach

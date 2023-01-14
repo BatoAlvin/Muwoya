@@ -37,20 +37,20 @@ class User extends Authenticatable
     ];
 
     public function role(){
-        return $this->belongsTo(Staffrole::class,'role_id','id');
+        return $this->belongsTo(Userpermission::class,'role_id','id');
     }
 
     public function staff(){
         return $this->belongsTo(Familymembers::class,'family_id','id');
     }
 
-    public function speciality(){
-        return $this->belongsTo(Speciality::class,'speciality_id','id');
-    }
+    // public function speciality(){
+    //     return $this->belongsTo(Speciality::class,'speciality_id','id');
+    // }
 
-    public function patient(){
-        return $this->belongsTo(Patient::class,'patient_id','id');
-    }
+    // public function patient(){
+    //     return $this->belongsTo(Patient::class,'patient_id','id');
+    // }
 
     /**
      * The attributes that should be cast.

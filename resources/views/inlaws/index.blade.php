@@ -28,11 +28,26 @@ color:#000;
     <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
      <h5>Inlaws Gift Exchange </h5>
+     <form action="{{ route('import') }}"
+     method="POST"
+     enctype="multipart/form-data">
+   @csrf
+   <input type="file" name="file"
+          class="form-control">
+   <br>
+   <button class="btn btn-success">
+         Import User Data
+      </button>
+</form>
         </div>
     </div>
     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="mt-3" style="float: right;margin-right:10px;"><i class="fa fa-plus">Add User</i></button>
      <a href="{{ route('exportinlaw')}}" class="btn btn-success"><i class="fa fa-download" style="color:#fff;">Excel</i></a>
+
+
+
+
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -100,8 +115,8 @@ color:#000;
                                 <td>{{$inlawexchanges->inlaw_names}}</td>
                                 </td>
 
-
-                                <td>
+<div style="float:left;">
+                                <td >
                                     <a href="{{url('inlaws/'.$inlawexchanges->id )}}"<button class="btn btn-success"><i class="fa fa-eye" style="color:#fff;"></i></button></a>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#exampleModal{{ $inlawexchanges->id }}"><i class='fa fa-edit'>
                                        </i>
@@ -154,6 +169,7 @@ color:#000;
                                         <button class="btn btn-danger"  onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
+                                </div>
                             </tr>
                             @endforeach
                         </tbody>
