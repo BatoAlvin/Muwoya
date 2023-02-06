@@ -54,7 +54,7 @@ color:#000;
 
                                  <div class="form-group">
                                   <label for="recipient-name" class="coll">Name</label>
-                                  <select class="form-control" name="loan_name" required>
+                                  <select class="form-control" name="family_id" required>
                                     <option selected disabled value=''>Choose Name</option>
                                         @foreach($consignee as $consignees)
                                         <option value="{{ $consignees->id}}">{{ $consignees->family_name}}</option>
@@ -136,7 +136,7 @@ color:#000;
                             @foreach ($loan as $loans)
                             <tr>
                               <td>{{$loop->iteration}}</td>
-                                <td>{{$loans->member->family_name}}</td>
+                                <td>{{$loans->memberloan->family_name}}</td>
                                 <td>{{ number_format($loans->loan_amount)}}</td>
                                 <td>{{ number_format($loans->return_amount)}}</td>
                                 <td>{{ number_format($loans->loan_percentage)}}</td>
@@ -159,7 +159,7 @@ color:#000;
                                            <div class="modal-dialog" role="document">
                                              <div class="modal-content">
                                                <div class="modal-header">
-                                                 <h5 class="modal-title" id="exampleModalLabel">Edit {{ $loans->member->loan_name }}</h5>
+                                                 {{-- <h5 class="modal-title" id="exampleModalLabel">Edit {{ $loans->member->loan_name }}</h5> --}}
                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                    <span aria-hidden="true">&times;</span>
                                                  </button>

@@ -23,7 +23,7 @@ class LoansController extends Controller
     public function index()
     {
         if(Auth::user()->role->view_loan ){
-        $loan = Loans::where('status',1)->get();
+        $loan = Loans::with('memberloan')->where('status',1)->get();
         $consignee = Familymembers::where('status',1)->get();
         return view('loans.index',['loan'=>$loan,'consignee'=>$consignee]);
     }else{
@@ -50,7 +50,8 @@ class LoansController extends Controller
     public function store(Request $request)
     {
         $post_service = Loans::create([
-            'loan_id' => $request->loan_id,
+            // 'loan_id' => $request->loan_id,
+            'family_id' => $request->family_id,
             'loan_amount' => $request->loan_amount,
             'return_amount' => $request->return_amount,
             'loan_percentage' => $request->loan_percentage,

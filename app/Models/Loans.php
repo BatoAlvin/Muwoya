@@ -10,7 +10,7 @@ class Loans extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function member(){
-        return $this->belongsTo(Familymembers::class,'loan_id','id');
+    public function memberloan(){
+        return $this->belongsTo(Familymembers::class,'family_id','id');
     }
 }

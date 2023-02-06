@@ -53,7 +53,7 @@
                     <div class="media pt-3">
                         <h5 class="mr-3"> Names :</h5>
                         <div class="media-body">
-                            <h5 class="m-b-5">{{ $loan->member->family_name}}</h5>
+                            <h5 class="m-b-5">{{ $loan->memberloan->family_name}}</h5>
                         </div>
                     </div>
 
