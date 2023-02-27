@@ -22,11 +22,9 @@ class DashboardController extends Controller
     {
        $staff = Familymembers::where("status",1)->count();
        $loan = Loans::where("status",1)->sum('return_amount');
-        // $user = User::count();
-        // $patient = Patient::count();
     $savings = Saving::where('status',1)->sum('amount');
     $membersavings = [];
-    $members = Familymembers::all();
+    $members = Familymembers::where('status',1)->whereNot('id', '=', 10)->get();
     foreach ($members as $member) {
         $msavings = Saving::where(['name'=>$member->id, 'status'=>1])->sum('amount');
         array_push($membersavings,['name'=>$member->family_name,'amount'=>$msavings]);
