@@ -24,7 +24,10 @@ return new class extends Migration
             $table->boolean('add_saving')->default(0);
             $table->boolean('update_saving')->default(0);
             $table->boolean('delete_saving')->default(0);
-
+            $table->boolean('view_loan')->default(0);
+            $table->boolean('add_loan')->default(0);
+            $table->boolean('update_loan')->default(0);
+            $table->boolean('delete_loan')->default(0);
 
             $table->timestamps();
         });

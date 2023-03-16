@@ -146,11 +146,14 @@
                                 class="icon icon-app-store"></i><span class="nav-text">Manage Savings</span></a>
                         <ul aria-expanded="false">
                             @if(Auth::user()->role->view_saving )
-                            <li><a href="{{ route('savings.index')}}">Savings</a></li>
+                            <li><a href="{{ route('savings.index')}}"> Savings</a></li>
                             @endif
 
+                            {{-- <li><a href="{{ url('allsavings')}}">Member Savings</a></li> --}}
+
+
                             @if(Auth::user()->role->view_savingsummary )
-                            <li><a href="{{ route('savingsummary.index')}}">Savingsummary</a></li>
+                            <li><a href="{{ route('savingsummary.allsavings')}}">Savingsummary</a></li>
                             @endif
                             </li>
                         </ul>

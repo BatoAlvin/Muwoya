@@ -55,41 +55,6 @@ function clearText()
         <div class="col-12">
             <div class="page-title-box">
                 <h4 class="page-title">Roles Table</h4>
-
-
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="mt-3" style="float: right;margin-right:10px;"><i class="fa fa-plus">Add Role</i></button>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New Role</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="{{ route('userpermission.store')}}" method='post'>
-
-                     <input id='token' type="hidden" name="_token" value="{{ csrf_token() }}" />
-                     <div class="form-group">
-                        <label class="col-form-label"> Roles</label>
-                        <input type="text" class="form-control" id="role" name="role_name" required>
-
-
-                      </div>
-            <div class="modal-footer">
-          <button type="reset" class="btn btn-secondary" data-dismiss="modal"  value="Reset" onclick="clearText()">Close</button>
-          <button type="submit" class="btn btn-primary">Add Role</button>
-        </div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
                 <div class="clearfix"></div>
             </div>
         </div>

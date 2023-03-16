@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Saving;
 use App\Models\User;
+use App\Notifications\SavingsAdded;
+use Illuminate\Support\Facades\Notification;
 use App\Models\Familymembers;
 use Illuminate\Http\Request;
 use App\Exports\SavingsExport;
@@ -26,14 +28,29 @@ class SavingController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role->view_saving ){
-        $saving = Saving::where('status',1)->get();
+        if(Auth::user()->role_id==1){
+            $saving = Saving::with('member')->get();
+        }else{
+            $saving = Saving::with('member')->where('name',Auth::user()->id)->get();
+        }
+        // return $saving;
         $consignee = Familymembers::where('status',1)->get();
         return view('savings.index',['saving'=>$saving,'consignee'=>$consignee]);
-    }else{
-        return redirect('/');
     }
-    }
+
+
+
+    // public function savingindex()
+    // {
+
+    //           $saving = Saving::where('status',1)->get();
+    //         // return   $posts = Saving::where('name', $user->id)->orderBy('id','desc')->get();
+    //     $consignee = Familymembers::where('status',1)->get();
+    //     return view('savings.allsavings',['saving'=>$saving,'consignee'=>$consignee]);
+    // }
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -59,6 +76,15 @@ class SavingController extends Controller
             'description' => $request->description,
             'date' => $request->date,
           ]);
+          $headers = "MIME-Version: 1.0" . "\r\n";
+          $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+          $from = "info@schoolmonitor.com";
+          $msg = "Your saving of $request->amount has been received successfully";
+        //   mail("alvinbato112@gmail.com","Deposit received successfully",$msg,$headers);
+        //   $request->user()->notify(new SavingsAdded($request->amount));
+        $member = Familymembers::find($request->name)->first();
+        $email = ['mail'=>$member->email,'name'=>$member->family_name];
+        Notification::route('mail', $member->email)->notify(new SavingsAdded($member));
           return redirect('/savings')->with('message', "Savings saved successfully");
     }
 

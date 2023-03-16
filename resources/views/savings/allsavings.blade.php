@@ -27,7 +27,7 @@ color:#000;
 <div class="row page-titles mx-0">
     <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-     <h5>Savings </h5>
+     <h5>Member Savings </h5>
 
 
         </div>

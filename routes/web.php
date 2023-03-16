@@ -53,7 +53,6 @@ Route::post('/registeruser', [DashboardController::class, 'createuser'])->name('
 
 //Family
 Route::resource('familymembers', FamilymembersController::class)->middleware('auth');
-
 Route::post('enroll/{id}', [FamilymembersController::class, 'enroll'])->name('enroll')->middleware('auth');
 Route::get('exportfamilymember/', [FamilymembersController::class, 'export'])->name('exportfamilymember')->middleware('auth');
 
@@ -61,7 +60,7 @@ Route::get('exportfamilymember/', [FamilymembersController::class, 'export'])->n
 //Savings
 Route::resource('savings', SavingController::class)->middleware('auth');
 Route::get('exportsaving/', [SavingController::class, 'export'])->name('exportsaving')->middleware('auth');
-
+// Route::get('/allsavings', [SavingController::class, 'savingindex'])->name('allsavings')->middleware('auth');
 //Eldersgift Exchange
 Route::resource('elders', EldersgiftexchangeController::class)->middleware('auth');
 Route::get('exportelders/', [EldersgiftexchangeController::class, 'export'])->name('exportelders')->middleware('auth');
