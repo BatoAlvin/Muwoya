@@ -75,7 +75,7 @@
                         <div class="header-left">
                             <div class="search_bar dropdown">
                                 <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                    <h2>Muwoya Family Savings</h2>
+                                    <h2>Kinawataka</h2>
 
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
