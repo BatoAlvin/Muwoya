@@ -21,7 +21,7 @@ class SavingsummaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexy()
     {
         if(Auth::user()->role->view_savingsummary ){
         $membersavings = [];
@@ -37,6 +37,23 @@ foreach ($members as $member) {
         return redirect('/');
     }
     }
+
+
+    public function index()
+    {
+
+        $membersavings = [];
+        $members = Familymembers::all();
+
+        // $members = Familymembers::where('status',1)->get();
+foreach ($members as $member) {
+    $savings = Saving::where(['name'=>$member->id, 'status'=>1])->sum('amount');
+    array_push($membersavings,['id'=>$member->id,'name'=>$member->family_name,'amount'=>$savings]);
+}
+        return view('savingsummary.index',['savingsummary'=>$membersavings]);
+
+    }
+
 
     /**
      * Show the form for creating a new resource.

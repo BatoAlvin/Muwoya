@@ -152,9 +152,9 @@
                             {{-- <li><a href="{{ url('allsavings')}}">Member Savings</a></li> --}}
 
 
-                            @if(Auth::user()->role->view_savingsummary )
-                            <li><a href="{{ route('savingsummary.allsavings')}}">Savingsummary</a></li>
-                            @endif
+                            {{-- @if(Auth::user()->role->view_savingsummary ) --}}
+                            {{-- <li><a href="{{ route('savingsummary.allsavings')}}">Savingsummary</a></li> --}}
+                            {{-- @endif --}}
                             </li>
                         </ul>
                     </li>

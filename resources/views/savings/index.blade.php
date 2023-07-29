@@ -58,7 +58,7 @@ color:#000;
                                   <select class="form-control" name="name" required>
                                     <option selected disabled value=''>Choose Name</option>
                                         @foreach($consignee as $consignees)
-                                        <option value="{{ $consignees->id}}">{{ $consignees->family_name}}</option>
+                                        <option value="{{ $consignees->id}}">{{ $consignees->name}}</option>
                                         <div id="editor-container" class="mb-1"></div>
                                         @endforeach
                                    </select>
@@ -117,7 +117,7 @@ color:#000;
                             <tr>
                               <td>{{$loop->iteration}}</td>
                                 <td>{{$savings->member?$savings->member->family_name:'-'}}</td>
-                                <td>{{ number_format($savings->amount)}}</td>
+                                <td>{{ number_format($savings->amount)}}shs</td>
                                 <td>{{$savings->description}}</td>
                                 <td>{{$savings->date}}</td>
                                 </td>

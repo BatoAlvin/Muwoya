@@ -13,5 +13,5 @@ class Saving extends Model
     public function member(){
         return $this->belongsTo(Familymembers::class,'name','id');
     }
-   
+
 }

@@ -55,6 +55,7 @@ color:#000;
                         <tbody>
                             @foreach ($savingsummary as $savingsummaries)
                             <tr>
+                               
                               <td>{{$loop->iteration}}</td>
                                 <td>{{$savingsummaries['name']}}</td>
                                 <td>{{ number_format($savingsummaries['amount'])}}</td>

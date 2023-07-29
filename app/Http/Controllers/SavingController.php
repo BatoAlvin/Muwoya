@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Saving;
+use App\Jobs\SavingJob;
+use App\Mail\SavingMail;
 use App\Models\User;
 use App\Notifications\SavingsAdded;
 use Illuminate\Support\Facades\Notification;
@@ -34,7 +36,7 @@ class SavingController extends Controller
             $saving = Saving::with('member')->where('name',Auth::user()->id)->get();
         }
         // return $saving;
-        $consignee = Familymembers::where('status',1)->get();
+        $consignee = User::all();
         return view('savings.index',['saving'=>$saving,'consignee'=>$consignee]);
     }
 
@@ -70,21 +72,18 @@ class SavingController extends Controller
      */
     public function store(Request $request)
     {
+
         $post_service = Saving::create([
             'name' => $request->name,
             'amount' => $request->amount,
             'description' => $request->description,
             'date' => $request->date,
           ]);
-          $headers = "MIME-Version: 1.0" . "\r\n";
-          $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-          $from = "info@schoolmonitor.com";
-          $msg = "Your saving of $request->amount has been received successfully";
-        //   mail("alvinbato112@gmail.com","Deposit received successfully",$msg,$headers);
-        //   $request->user()->notify(new SavingsAdded($request->amount));
-        $member = Familymembers::find($request->name)->first();
-        $email = ['mail'=>$member->email,'name'=>$member->family_name];
-        Notification::route('mail', $member->email)->notify(new SavingsAdded($member));
+        $user = User::find($request->name);
+          $email = "$user->email";
+          $subject = "Savings for this month";
+          $mailText = "Thank you, your account has been credited with shs".number_format($request->amount)." on ".$request->date;
+          dispatch_now(new SavingJob(new SavingMail($email, $mailText, $subject), $email));
           return redirect('/savings')->with('message', "Savings saved successfully");
     }
 

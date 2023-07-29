@@ -9,7 +9,7 @@ class Savingsummary extends Model
 {
     use HasFactory;
 
-    public function member(){
-        return $this->belongsTo(Familymembers::class,'name','id');
-    }
+    // public function member(){
+    //     return $this->belongsTo(Familymembers::class,'name','id');
+    // }
 }
