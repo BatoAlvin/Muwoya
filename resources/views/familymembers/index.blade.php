@@ -112,11 +112,12 @@ color:#000;
 
 
                                 <td>
-                                    <a href="{{url('familymembers/'.$members->id )}}"<button class="btn btn-success"><i class="fa fa-eye" style="color: #fff;"></i></button></a>
+                                    <div style="display: flex">
+                                    <a style="margin-right:10px;" href="{{url('familymembers/'.$members->id )}}"<button class="btn btn-success"><i class="fa fa-eye" style="color: #fff;"></i></button></a>
 
 
                                     @if(Auth::user()->role->update_familymember )
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#exampleModal{{ $members->id }}"><i class='fa fa-edit'>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" style="margin-right:10px;"  data-target="#exampleModal{{ $members->id }}"><i class='fa fa-edit'>
                                        </i>
                                        </button>
                                        @endif
@@ -181,6 +182,7 @@ color:#000;
                                         <button class="btn btn-danger"  onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
                                        @endif
                                     </form>
+                                </div>
                                     </td>
                             </tr>
                             @endforeach

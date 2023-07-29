@@ -87,8 +87,8 @@ color:#000;
                     <table id="example2" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Name</th>
+                                <th>Person1</th>
+                                <th>Person2</th>
                                 <th>View</th>
 
                             </tr>
@@ -96,6 +96,7 @@ color:#000;
                         <tbody>
                             @foreach ($workingclassexchange as $workingclassexchanges)
                             <tr>
+                                <div
                                 <td>{{$workingclassexchanges->workingclassname}}</td>
                                 <td>{{$workingclassexchanges->workingclassnames}}</td>
                                 </td>

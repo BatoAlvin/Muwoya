@@ -31,14 +31,14 @@ color:#000;
         </div>
     </div>
     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="mt-3" style="float: right;margin-right:10px;"><i class="fa fa-plus">Add User</i></button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="mt-3" style="float: right;margin-right:10px;"><i class="fa fa-plus">Add Elder</i></button>
      <a href="{{ route('exportelders')}}" class="btn btn-success"><i class="fa fa-download" style="color:#fff;">Excel</i></a>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">New User</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">New Elder</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -53,13 +53,13 @@ color:#000;
 
 
                         <div class="form-group">
-                         <label for="recipient-name" class="coll">Name</label>
+                         <label for="recipient-name" class="coll">Person1</label>
                          <input type="text" class="form-control"  name="name" id="amountid" required>
                        </div>
 
 
                        <div class="form-group">
-                         <label for="recipient-name" class="coll"> Name</label>
+                         <label for="recipient-name" class="coll"> Person2</label>
                          <textarea type="text" class="form-control"  name="eldergift" id="descriptionid" required></textarea>
                        </div>
 
@@ -67,7 +67,7 @@ color:#000;
 
                         <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-dismiss="modal" value="Reset" onclick="clearTexts()">Close</button>
-                      <button type="submit" class="btn btn-primary">Add User</button>
+                      <button type="submit" class="btn btn-primary">Add Elder</button>
                     </div>
                       </form>
                 </div>
@@ -87,8 +87,8 @@ color:#000;
                     <table id="example2" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Name</th>
+                                <th>Person1</th>
+                                <th>Person2</th>
                                 <th>View</th>
 
                             </tr>
@@ -102,8 +102,9 @@ color:#000;
 
 
                                 <td>
-                                    <a href="{{url('elders/'.$elderexchanges->id )}}"<button class="btn btn-success"><i class="fa fa-eye" style="color:#fff;"></i></button></a>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#exampleModal{{ $elderexchanges->id }}"><i class='fa fa-edit'>
+                                    <div style="display: flex;">
+                                    <a style="margin-right: 10px;" href="{{url('elders/'.$elderexchanges->id )}}"<button class="btn btn-success"><i class="fa fa-eye" style="color:#fff;"></i></button></a>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" style="margin-right: 10px;" data-target="#exampleModal{{ $elderexchanges->id }}"><i class='fa fa-edit'>
                                        </i>
                                        </button>
 
@@ -153,6 +154,7 @@ color:#000;
                                         <input name="_method" type="hidden" value="DELETE">
                                         <button class="btn btn-danger"  onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
                                         </form>
+                                    </div>
                                     </td>
                             </tr>
                             @endforeach
