@@ -75,7 +75,7 @@
                         <div class="header-left">
                             <div class="search_bar dropdown">
                                 <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                    <h2>Kinawataka</h2>
+                                    <h2></h2>
 
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
@@ -150,6 +150,10 @@
                             @endif
 
                             {{-- <li><a href="{{ url('allsavings')}}">Member Savings</a></li> --}}
+
+
+
+                             <li><a href="{{ route('savingsummary.index')}}">Savingsummary</a></li>
 
 
                             {{-- @if(Auth::user()->role->view_savingsummary ) --}}
