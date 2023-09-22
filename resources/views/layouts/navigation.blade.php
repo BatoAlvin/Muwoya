@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Staff </title>
+    <title>GMF </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     {{-- <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
@@ -95,6 +95,11 @@
                                     <a href="{{ route('myprofile') }}" class="dropdown-item">
                                         <i class="icon-user"></i>
                                         <span class="ml-2">Profile </span>
+                                    </a>
+
+                                    <a href="{{ route('changepassword.index') }}" class="dropdown-item">
+                                        <i class="icon-pencil"></i>
+                                        <span class="ml-2">Edit Password </span>
                                     </a>
 
                                     <form method="POST" action="{{ route('logout') }}">

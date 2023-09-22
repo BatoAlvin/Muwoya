@@ -24,6 +24,8 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\PharmacyController;
+use App\Http\Controllers\ChangepasswordController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,13 +38,14 @@ use App\Http\Controllers\PharmacyController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::resource('changepassword', ChangepasswordController::class)->middleware('auth');
 
 Route::get('/',  [DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
 Route::get('/myprofile', [DashboardController::class, 'myprofile'])->name('myprofile')
