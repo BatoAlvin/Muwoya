@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FamilymembersController;
+use App\Http\Controllers\DynamicController;
 use App\Http\Controllers\SavingController;
 use App\Http\Controllers\SavingsummaryController;
 use App\Http\Controllers\EldersgiftexchangeController;
@@ -23,6 +24,8 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\PharmacyController;
+use App\Http\Controllers\ChangepasswordController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,8 +38,10 @@ use App\Http\Controllers\PharmacyController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
+
+Route::resource('changepassword', ChangepasswordController::class)->middleware('auth');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -99,6 +104,12 @@ Route::post('validateuserpermission', [UserpermissionController::class, 'validat
 
 Route::get('/file-import',[InlawsController::class,'importView'])->name('import-view');
 Route::post('/import',[InlawsController::class,'import'])->name('import');
+
+
+
+Route::resource('dynamic', DynamicController::class)->middleware('auth');
+Route::post('/save-data', [DynamicController::class, 'saveData'])->name('save-data');
+
 
 // Route::get('/',  [DashboardController::class,'index'])->middleware(['auth'])->name('dashboard');
 // Route::get('/dashboard',  [DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');

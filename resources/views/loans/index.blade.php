@@ -146,10 +146,11 @@ color:#000;
 
 
                                 <td>
-                                    <a href="{{url('loans/'.$loans->id )}}"<button class="btn btn-success"><i class="fa fa-eye" style="color:#fff;"></i></button></a>
+                                    <div style="display:flex">
+                                    <a href="{{url('loans/'.$loans->id )}}" style="margin-right: 10px;" <button class="btn btn-success"><i class="fa fa-eye" style="color:#fff;"></i></button></a>
 
                                     @if(Auth::user()->role->update_loan )
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#exampleModal{{ $loans->id }}"><i class='fa fa-edit'>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"  style="margin-right: 10px;"  data-target="#exampleModal{{ $loans->id }}"><i class='fa fa-edit'>
                                        </i>
                                        </button>
                                        @endif
@@ -231,6 +232,7 @@ color:#000;
                                        @endif
                                     </form>
                                     </td>
+                                </div>
                             </tr>
                             @endforeach
                         </tbody>

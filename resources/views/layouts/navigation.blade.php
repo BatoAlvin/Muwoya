@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Staff </title>
+    <title>GMF </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     {{-- <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
@@ -75,7 +75,7 @@
                         <div class="header-left">
                             <div class="search_bar dropdown">
                                 <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                    <h2>Kinawataka</h2>
+                                    <h2></h2>
 
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
@@ -97,6 +97,11 @@
                                         <span class="ml-2">Profile </span>
                                     </a>
 
+<a href="{{ route('changepassword.index') }}" class="dropdown-item">
+                                        <i class="icon-pencil"></i>
+                                        <span class="ml-2">Edit Password </span>
+                                    </a>
+                                    
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <a href="{{ route('logout') }}" class="dropdown-item"
@@ -149,12 +154,12 @@
                             <li><a href="{{ route('savings.index')}}"> Savings</a></li>
                             @endif
 
-                            {{-- <li><a href="{{ url('allsavings')}}">Member Savings</a></li> --}}
+                           
 
+                          
+                             <li><a href="{{ route('savingsummary.index')}}">Savingsummary</a></li>
 
-                            {{-- @if(Auth::user()->role->view_savingsummary ) --}}
-                            {{-- <li><a href="{{ route('savingsummary.allsavings')}}">Savingsummary</a></li> --}}
-                            {{-- @endif --}}
+                             
                             </li>
                         </ul>
                     </li>
@@ -172,17 +177,17 @@
                     </li>
 
 
-                    <li class="nav-label">GiftExchange</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-app-store"></i><span class="nav-text">Manage GiftExchange</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ route('elders.index')}}">Elders</a></li>
-                            <li><a href="{{ route('students.index')}}">Students</a></li>
-                            <li><a href="{{ route('workingclass.index')}}">Working Class</a></li>
-                            <li><a href="{{ route('noneworkingclass.index')}}">Non Working Class</a></li>
-                            <li><a href="{{ route('inlaws.index')}}">Inlaws</a></li>
-                        </ul>
-                    </li>
+                    <!--<li class="nav-label">GiftExchange</li>-->
+                    <!--<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i-->
+                    <!--            class="icon icon-app-store"></i><span class="nav-text">Manage GiftExchange</span></a>-->
+                    <!--    <ul aria-expanded="false">-->
+                    <!--        <li><a href="{{ route('elders.index')}}">Elders</a></li>-->
+                    <!--        <li><a href="{{ route('students.index')}}">Students</a></li>-->
+                    <!--        <li><a href="{{ route('workingclass.index')}}">Working Class</a></li>-->
+                    <!--        <li><a href="{{ route('noneworkingclass.index')}}">Non Working Class</a></li>-->
+                    <!--        <li><a href="{{ route('inlaws.index')}}">Inlaws</a></li>-->
+                    <!--    </ul>-->
+                    <!--</li>-->
 
 
                     <li class="nav-label">Permissions</li>

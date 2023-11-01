@@ -62,7 +62,7 @@ color:#000;
 
                        <div class="form-group">
                          <label for="recipient-name" class="coll"> Contact</label>
-                         <input type="text" class="form-control"  name="contact" id="contactid" required>
+                         <input type="number" class="form-control"  name="contact" id="contactid" required>
                        </div>
 
                        <div class="form-group">
@@ -93,6 +93,7 @@ color:#000;
                     <table id="example2" class="display" style="width:100%">
                         <thead>
                             <tr>
+                                <th>SN</th>
                                 <th>Names</th>
                                 <th>Email</th>
                                 <th>Contact</th>
@@ -104,6 +105,7 @@ color:#000;
                         <tbody>
                             @foreach ($member as $members)
                             <tr>
+                                <td>{{$loop->iteration}}</td>
                                 <td>{{$members->family_name}}</td>
                                 <td>{{$members->email}}</td>
                                 <td>{{$members->contact}}</td>
