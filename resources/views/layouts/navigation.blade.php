@@ -97,11 +97,19 @@
                                         <span class="ml-2">Profile </span>
                                     </a>
 
+<<<<<<< HEAD
 <a href="{{ route('changepassword.index') }}" class="dropdown-item">
                                         <i class="icon-pencil"></i>
                                         <span class="ml-2">Edit Password </span>
                                     </a>
                                     
+=======
+                                    <a href="{{ route('changepassword.index') }}" class="dropdown-item">
+                                        <i class="icon-pencil"></i>
+                                        <span class="ml-2">Edit Password </span>
+                                    </a>
+
+>>>>>>> b361e604f62b0af2608e70d74bcdf91380351dbe
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <a href="{{ route('logout') }}" class="dropdown-item"
@@ -159,7 +167,17 @@
                           
                              <li><a href="{{ route('savingsummary.index')}}">Savingsummary</a></li>
 
+<<<<<<< HEAD
                              
+=======
+
+                             <li><a href="{{ route('savingsummary.index')}}">Savingsummary</a></li>
+
+
+                            {{-- @if(Auth::user()->role->view_savingsummary ) --}}
+                            {{-- <li><a href="{{ route('savingsummary.allsavings')}}">Savingsummary</a></li> --}}
+                            {{-- @endif --}}
+>>>>>>> b361e604f62b0af2608e70d74bcdf91380351dbe
                             </li>
                         </ul>
                     </li>

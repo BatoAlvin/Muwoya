@@ -47,6 +47,7 @@ Route::resource('changepassword', ChangepasswordController::class)->middleware('
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::resource('changepassword', ChangepasswordController::class)->middleware('auth');
 
 Route::get('/',  [DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
 Route::get('/myprofile', [DashboardController::class, 'myprofile'])->name('myprofile')
